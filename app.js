@@ -8,12 +8,14 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 
 const allowedOrigins = [
+  "http://localhost:4000",
+  "http://localhost:3000",
   "https://servicios-web-final.onrender.com",
 ];
-const options = {
-  origin: (origin, callback) => {
-    if (!origin) return callback(null, true);
 
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (!origin) return callback(null, true); // Swagger a veces manda null
     if (allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
@@ -21,32 +23,33 @@ const options = {
     }
   },
   credentials: true,
+  allowedHeaders: ["Content-Type", "Authorization"],
 };
 
-// Middlewares globales.
-app.use(cors(options));
+// CORS SIEMPRE DE PRIMERO
+app.use(cors(corsOptions));
 
-app.use(express.json()); // Es lo mismo que bodyParser.json()
-
-// Swagger
-const setupSwagger = require("./swagger");
-setupSwagger(app);
+// Body parser
+app.use(express.json());
 
 // Enrutamiento
 const routerApi = require("./routes/rutas");
 routerApi(app);
+
+// Swagger (DESPUÉS del router)
+const setupSwagger = require("./swagger");
+setupSwagger(app);
 
 // ErrorHandler
 const { logErrors, errorHandler } = require("./middlewares/errorHandler");
 app.use(logErrors);
 app.use(errorHandler);
 
-// Conexión MongoDB
+// MongoDB
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => console.log("Conexión a mongoDB exitosa"))
   .catch((err) => console.error("No se puede conectar a mongoDB", err));
 
-// Levantar servidor
 const PORT = process.env.PORT;
 app.listen(PORT, () => console.log(`Servidor iniciado en el puerto ${PORT}`));
