@@ -14,6 +14,10 @@ const swaggerDefinition = {
       url: "http://localhost:4000",
       description: "Servidor de Desarrollador",
     },
+    {
+      url: "https://servicios-web-final.onrender.com/api/docs/#/Devices/get_api_devices",
+      Description: "Servidor de revisión",
+    },
   ],
 };
 
