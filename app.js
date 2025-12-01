@@ -7,7 +7,7 @@ const app = express();
 const cors = require("cors");
 const mongoose = require("mongoose");
 
-// Middlewares globales
+// Middlewares globales.
 app.use(cors());
 app.use(express.json()); // Es lo mismo que bodyParser.json()
 
