@@ -8,7 +8,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 
 const allowedOrigins = [
-  "https://servicios-web-final.onrender.com/api/docs/#/Devices/get_api_devices",
+  "https://servicios-web-final.onrender.com",
 ];
 const options = {
   origin: (origin, callback) => {
