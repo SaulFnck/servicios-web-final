@@ -23,7 +23,6 @@ const corsOptions = {
     }
   },
   credentials: true,
-  allowedHeaders: ["Content-Type", "Authorization"],
 };
 
 // CORS SIEMPRE DE PRIMERO
