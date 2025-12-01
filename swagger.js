@@ -15,7 +15,7 @@ const swaggerDefinition = {
       description: "Servidor de Desarrollador",
     },
     {
-      url: "https://servicios-web-final.onrender.com/api/docs/#/Devices/get_api_devices",
+      url: "https://servicios-web-final.onrender.com",
       Description: "Servidor de revisión",
     },
   ],
