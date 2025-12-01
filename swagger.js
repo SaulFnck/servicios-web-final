@@ -12,11 +12,11 @@ const swaggerDefinition = {
   servers: [
     {
       url: "http://localhost:4000",
-      description: "Servidor de Desarrollador",
+      description: "Servidor de desarrollo",
     },
     {
       url: "https://servicios-web-final.onrender.com",
-      Description: "Servidor de revisión",
+      description: "Servidor de producción",
     },
   ],
 };
