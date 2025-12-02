@@ -10,10 +10,12 @@ const swaggerDefinition = {
     description: "Documentacion de la Api con Swagger",
   },
   servers: [
+    /*
     {
       url: "http://localhost:4000",
       description: "Servidor de desarrollo",
     },
+    */
     {
       url: "https://servicios-web-final.onrender.com",
       description: "Servidor de producción",
