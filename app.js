@@ -26,7 +26,7 @@ const corsOptions = {
 };
 
 // CORS SIEMPRE DE PRIMERO
-app.use(cors(corsOptions));
+app.use(cors());
 
 // Body parser
 app.use(express.json());
