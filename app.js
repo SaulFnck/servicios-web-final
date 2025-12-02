@@ -25,17 +25,16 @@ const corsOptions = {
   credentials: true,
 };
 
-// CORS SIEMPRE DE PRIMERO
-app.use(cors());
+app.use(cors(corsOptions));
 
-// Body parser
+// Función igual aBody parser
 app.use(express.json());
 
 // Enrutamiento
 const routerApi = require("./routes/rutas");
 routerApi(app);
 
-// Swagger (DESPUÉS del router)
+// Swagger
 const setupSwagger = require("./swagger");
 setupSwagger(app);
 
