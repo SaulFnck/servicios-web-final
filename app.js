@@ -1,3 +1,5 @@
+const https = require("node:https");
+
 // Cargar variables de entorno
 require("dotenv").config();
 
@@ -55,3 +57,18 @@ app.listen(PORT, () => console.log(`Servidor iniciado en el puerto ${PORT}`));
 app.get("/", (req, res) => {
   res.send("API funcionando");
 });
+
+//Realizar solicitud get al servidor para mantenerlo encendido.
+setInterval(() => {
+  https
+    .get("https://servicios-web-final.onrender.com", (res) => {
+      //res.on escucha eventos
+      res.on("data", () => {});
+      res.on("end", () => {
+        console.log("HTTPS request finished");
+      });
+    })
+    .on("error", (err) => {
+      console.log("HTTPS error:", err.message);
+    });
+}, 5 * 60 * 1000);
